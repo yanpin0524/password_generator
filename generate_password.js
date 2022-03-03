@@ -1,3 +1,8 @@
+function sample(array) {
+  const index = Math.floor(Math.random() * array.length)
+  return array[index]
+}
+
 function generatePassword() {
   // define things user might want
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
@@ -6,7 +11,7 @@ function generatePassword() {
   const symbols = '`~!@$%^&*()-_+={}[]|;:"<>,.?/'
 
   const options = {
-    length: 12,
+    length: 4,
     lowercase: 'on',
     uppercase: 'on',
     numbers: 'on',
@@ -33,19 +38,19 @@ function generatePassword() {
   }
 
   // remove things user do not need
-
   if (options.excludeCharacters) {
-    console.log(`exclude characters: ${options.excludeCharacters}`)
     collection = collection.filter(
       character => !options.excludeCharacters.includes(character)
     )
   }
+
   // start generating password
-
+  let password = ''
+  for (let i = 0; i < Number(options.length); i++) {
+    password += sample(collection)
+  }
   // return the generated password
-  console.log('collection', collection)
-  console.log('This function will generate password')
+  return password
 }
-
 
 generatePassword()
