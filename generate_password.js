@@ -32,12 +32,18 @@ function generatePassword() {
     collection = collection.concat(symbols.split(''))
   }
 
-  console.log('collection', collection)
   // remove things user do not need
 
+  if (options.excludeCharacters) {
+    console.log(`exclude characters: ${options.excludeCharacters}`)
+    collection = collection.filter(
+      character => !options.excludeCharacters.includes(character)
+    )
+  }
   // start generating password
 
   // return the generated password
+  console.log('collection', collection)
   console.log('This function will generate password')
 }
 
