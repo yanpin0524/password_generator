@@ -3,20 +3,12 @@ function sample(array) {
   return array[index]
 }
 
-function generatePassword() {
+function generatePassword(options) {
   // define things user might want
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
   const upperCaseLetters = lowerCaseLetters.toUpperCase()
   const numbers = '1234567890'
   const symbols = '`~!@$%^&*()-_+={}[]|;:"<>,.?/'
-
-  const options = {
-    length: 4,
-    lowercase: 'on',
-    uppercase: 'on',
-    numbers: 'on',
-    excludeCharacters: '40'
-  }
 
   // create a collection to store things user picked up
   let collection = []
@@ -53,4 +45,4 @@ function generatePassword() {
   return password
 }
 
-generatePassword()
+module.exports = generatePassword
